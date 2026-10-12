@@ -1,24 +1,22 @@
 #include <cstdio>
-#include <vector>
-#include <algorithm>
-using namespace std;
 
 int main() {
     int x, k, p;
-    if (scanf("%d %d %d", &x, &k, &p) != 3) return 0;
+    scanf("%d %d %d", &x, &k, &p);
     
-    // Use vector for dynamic allocation
-    vector<int> seats(x - 1, 0);
+    int seats[1000];
+    for (int i = 0; i < 1000; i++) {
+        seats[i] = 0;
+    }
     
     for (int i = 0; i < p; i++) {
         int u, v, n;
-        if (scanf("%d %d %d", &u, &v, &n) != 3) break;
+        scanf("%d %d %d", &u, &v, &n);
         
         int seg_left = u - 1;
         int seg_right = v - 2;
         
         if (seg_left <= seg_right) {
-            // Find maximum seats in range
             int max_seats = 0;
             for (int j = seg_left; j <= seg_right; j++) {
                 if (seats[j] > max_seats) {
@@ -27,7 +25,6 @@ int main() {
             }
             
             if (max_seats + n <= k) {
-                // Update all segments in range
                 for (int j = seg_left; j <= seg_right; j++) {
                     seats[j] += n;
                 }
