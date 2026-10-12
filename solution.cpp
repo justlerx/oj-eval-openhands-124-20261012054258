@@ -61,9 +61,10 @@ private:
 public:
     SegmentTree(int n) {
         size = n;
-        max_val = new int[4 * n];
-        lazy = new int[4 * n];
-        for (int i = 0; i < 4 * n; i++) {
+        int tree_size = 4 * n + 5;
+        max_val = new int[tree_size];
+        lazy = new int[tree_size];
+        for (int i = 0; i < tree_size; i++) {
             max_val[i] = 0;
             lazy[i] = 0;
         }
@@ -76,11 +77,13 @@ public:
     
     void update_range(int left, int right, int val) {
         if (left > right) return;
+        if (size <= 0) return;
         range_update(1, 0, size - 1, left, right, val);
     }
     
     int query_max(int left, int right) {
         if (left > right) return 0;
+        if (size <= 0) return 0;
         return range_query(1, 0, size - 1, left, right);
     }
 };
