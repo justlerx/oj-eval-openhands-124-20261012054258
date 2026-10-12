@@ -87,14 +87,14 @@ public:
 
 int main() {
     int x, k, p;
-    scanf("%d %d %d", &x, &k, &p);
+    if (scanf("%d %d %d", &x, &k, &p) != 3) return 0;
     
     // There are x-1 segments between x stations
     SegmentTree st(x - 1);
     
     for (int i = 0; i < p; i++) {
         int u, v, n;
-        scanf("%d %d %d", &u, &v, &n);
+        if (scanf("%d %d %d", &u, &v, &n) != 3) break;
         
         // Convert to 0-based segment indices
         // From station u to v means segments [u-1, v-2]

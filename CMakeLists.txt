@@ -8,6 +8,4 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 add_executable(code solution.cpp)
 
 # Set optimization flags
-set_target_properties(code PROPERTIES
-    CXX_FLAGS "-O2 -Wall -Wextra"
-)
+target_compile_options(code PRIVATE -O2 -Wall -Wextra)
